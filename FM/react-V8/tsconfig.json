@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipDefaultLibCheck": true,
+    "esModuleInterop": false,
+    "forceConsistentCasingInFileNames": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "outDir": "dist",
+    "declarationDir": "./types",
+    "declarationMap": true
+  },
+  "include": ["src"]
+}
