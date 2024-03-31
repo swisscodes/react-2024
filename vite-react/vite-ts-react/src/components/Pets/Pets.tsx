@@ -5,12 +5,12 @@ export interface IProp {
   id?: number;
 }
 
-function Pets(props:IProp) {
+function Pets({name, animal, breed,}:IProp) {
   return (
     <div>
-      <h1>{props.name}</h1>
-      <h1>{props.animal}</h1>
-      <h1>{props.breed}</h1>
+      <h1>{name}</h1>
+      <h1>{animal}</h1>
+      <h1>{breed}</h1>
     </div>
   );
 }
