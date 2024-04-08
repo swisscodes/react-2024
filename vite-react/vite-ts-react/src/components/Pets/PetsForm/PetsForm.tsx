@@ -1,16 +1,21 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import useBreedHook from "src/Hooks/useBreedHook";
 
-interface IPetsForm {
-  requestPets(): void;
+export interface IPetsForm {
+  requestPets(): void,
+  formState:{
+    location:[string, Dispatch<SetStateAction<string>>],
+    animal:[string, Dispatch<SetStateAction<string>>],
+    breed:[string, Dispatch<SetStateAction<string>>],
+  }
 }
 
-function PetsForm({ requestPets }: IPetsForm) {
+function PetsForm({ requestPets, formState}: IPetsForm) {
   const animals = ["bird", "cat", "dog", "rabbit", "reptile"];
 
-  const [location, setLocation] = useState("");
-  const [animal, setAnimal] = useState("");
-  const [breed, setBreed] = useState("");
+  const [location, setLocation] = formState.location;
+  const [animal, setAnimal] = formState.animal;
+  const [breed, setBreed] = formState.breed;
   const [breeds] = useBreedHook(animal);
 
   return (
