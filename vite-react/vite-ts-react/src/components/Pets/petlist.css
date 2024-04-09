@@ -1,2 +1,19 @@
+.search-wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: 400px auto;
+}
+
+.search {
+  height: 95vh;
+  overflow: auto;
+}
+
 .pet-items {
+  display: flex;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

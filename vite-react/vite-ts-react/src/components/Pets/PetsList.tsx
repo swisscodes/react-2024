@@ -9,38 +9,44 @@ interface IPetsArray {
 
 function PetsList({ pets }: IPetsArray) {
   const { petId } = useParams();
-  const [a, setA] = useState<number>();
+  const [current, setCurrent] = useState<number>();
+  const [currentPet, setCurrentPet] = useState<IProp>();
+
   return (
-    <div className="search">
-      {!pets.length ? (
-        <h1>No Pets Found</h1>
-      ) : (
-        pets.map((pet: IProp) => (
-          <div className="pet-items" key={pet.id}>
-            <Link
-              to={`/details/${pet.id}`}
-              onClick={(e) => name(e, pet.id)}
-              className="pet-link"
-            >
-              <Pets
-                name={pet.name}
-                animal={pet.animal}
-                breed={pet.breed}
-                images={pet.images}
-                id={pet.id}
-              />
-            </Link>
-            {a === pet.id || Number(petId) === pet.id ? (
-              <Outlet context={{ id: pet.id, name: pet.name }} key={pet.id} />
-            ) : null}
-          </div>
-        ))
-      )}
+    <div className="search-wrap">
+      <div className="search">
+        {!pets.length ? (
+          <h1>No Pets Found</h1>
+        ) : (
+          pets.map((pet: IProp) => (
+            <div className="pet-items" key={pet.id}>
+              <Link
+                to={`/details/${pet.id}`}
+                onClick={(e) => name(e, pet)}
+                className="pet-link"
+              >
+                <Pets
+                  name={pet.name}
+                  animal={pet.animal}
+                  breed={pet.breed}
+                  images={pet.images}
+                  id={pet.id}
+                />
+              </Link>
+              
+            </div>
+          ))
+        )}
+      </div>
+      {current === currentPet?.id || Number(petId) === currentPet?.id ? (
+                <Outlet context={{ id: currentPet?.id, name: currentPet?.name }} key={currentPet?.id} />
+              ) : null}
     </div>
   );
 
-  function name(e: MouseEvent<HTMLAnchorElement>, id?: number) {
-    setA(id);
+  function name(e: MouseEvent<HTMLAnchorElement>, pet?: IProp) {
+    setCurrent(pet?.id);
+    setCurrentPet(pet)
   }
 }
 
